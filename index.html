@@ -125,13 +125,25 @@ h3{font-family:var(--wide);font-stretch:110%;font-weight:700;font-size:21px;line
 .note .more{font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--source)}
 
 /* Contact */
-.contact .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end}
-.mailrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px}
-.mail{font-family:var(--wide);font-stretch:115%;font-weight:600;font-size:clamp(22px,2.6vw,32px);letter-spacing:-.01em;text-decoration:none;border-bottom:2px solid var(--source)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,88px);align-items:start}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px;background:var(--paper);border:1px solid var(--rule);padding:clamp(20px,3vw,32px)}
+.field{display:grid;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font:500 11px/1.2 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{font:16px/1.4 var(--wide);color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:2px;padding:12px 14px;width:100%}
+.field textarea{min-height:140px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--source);outline-offset:0;border-color:var(--source)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form .actions{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.status{font-size:15px;color:var(--muted);margin:0}
+.status.ok{color:var(--ink)}
+.status.err{color:#a3341a}
 .btn{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;background:transparent;color:var(--ink);border:1px solid var(--ink);padding:12px 16px;cursor:pointer;text-decoration:none;display:inline-block}
 .btn:hover{background:var(--ink);color:var(--bg)}
-.btn.solid{background:var(--source);border-color:var(--source);color:#fff}
+.btn.solid{background:var(--source);border-color:var(--source);color:#fff;padding:15px 22px}
 .btn.solid:hover{filter:brightness(1.06);background:var(--source);color:#fff}
+.btn[disabled]{opacity:.6;cursor:wait}
+.side{display:grid;gap:14px;margin-top:28px;justify-items:start}
 
 footer{border-top:1px solid var(--rule)}
 footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
@@ -149,6 +161,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
 
 @media (max-width:900px){
   .split,.neighbors,.contact .wrap{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
   .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
   .qs,.triad{grid-template-columns:1fr}
   .bar nav{display:none}
@@ -423,16 +436,36 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
     <div>
       <span class="label hot">Long-term investors</span>
       <h2>Not the fast-money kind. The kind who wants it built to last.</h2>
-      <p class="lead" style="margin-bottom:24px">If you want your money in something real, built right, let's talk.</p>
-      <div class="mailrow">
-        <a class="mail" href="mailto:bo@behindtmd.com">bo@behindtmd.com</a>
-        <button class="btn" type="button" data-copy="bo@behindtmd.com">Copy email</button>
+      <p class="lead">If you want your money in something real, built right, let's talk. Landowners, counties and suppliers who stand behind their dates are welcome too.</p>
+      <div class="side">
+        <span class="label">Also on LinkedIn</span>
+        <a class="btn" href="https://www.linkedin.com/in/bo-scott" target="_blank" rel="noopener">Bo Scott on LinkedIn</a>
       </div>
     </div>
-    <div style="display:grid;gap:12px;justify-items:start">
-      <span class="label">Also on LinkedIn</span>
-      <a class="btn solid" href="https://www.linkedin.com/in/bo-scott" target="_blank" rel="noopener">Bo Scott on LinkedIn</a>
-    </div>
+    <form class="form" id="contact-form" novalidate>
+      <input type="hidden" name="access_key" value="3d3d7627-1054-4fb5-9e8c-28fb6450cdbc">
+      <input type="hidden" name="subject" value="New inquiry from behindtmd.com">
+      <input type="hidden" name="from_name" value="behindtmd.com">
+      <div class="hp" aria-hidden="true"><label for="botcheck">Leave this empty</label><input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off"></div>
+      <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="cf-company">Company</label><input id="cf-company" name="company" type="text" autocomplete="organization"></div>
+      <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="cf-role">I am a</label>
+        <select id="cf-role" name="role">
+          <option>Long-term investor</option>
+          <option>Landowner</option>
+          <option>County or public official</option>
+          <option>Supplier or contractor</option>
+          <option>Tenant or compute buyer</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field full"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" required></textarea></div>
+      <div class="actions">
+        <button class="btn solid" type="submit" id="cf-send">Send message</button>
+        <p class="status" id="cf-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
   </div>
 </section>
 </div>
@@ -499,7 +532,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
       <svg width="34" height="30" aria-hidden="true"><use href="#mark"/></svg>
       <span class="wm" style="font-size:20px"><b>Behind</b><span>TMD</span></span>
     </a>
-    <span class="label">© 2026 Behind the Meter Developments · bo@behindtmd.com</span>
+    <span class="label">© 2026 Behind the Meter Developments</span>
   </div>
 </footer>
 
@@ -531,14 +564,27 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
   }
   window.addEventListener("hashchange",route); route();
 
-  // copy email
-  document.querySelectorAll("[data-copy]").forEach(function(b){
-    b.addEventListener("click",function(){
-      var v=b.getAttribute("data-copy"), lbl=b.textContent;
-      function done(){b.textContent="Copied";setTimeout(function(){b.textContent=lbl},1600)}
-      try{navigator.clipboard.writeText(v).then(done,function(){sel()})}catch(e){sel()}
-      function sel(){var m=document.querySelector(".mail");var r=document.createRange();r.selectNodeContents(m);var s=getSelection();s.removeAllRanges();s.addRange(r)}
-    });
+  // contact form
+  var f=document.getElementById("contact-form"), st=document.getElementById("cf-status"), btn=document.getElementById("cf-send"), t0=Date.now();
+  function say(m,c){st.textContent=m;st.className="status"+(c?" "+c:"")}
+  var E=f.elements;
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    if(E.botcheck.checked) return;
+    var bad=[E["name"],E.email,E.message].filter(function(x){return !x.value.trim()});
+    if(bad.length){say("Please fill in your name, email and a message.","err");bad[0].focus();return}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(E.email.value)){say("That email address doesn't look complete.","err");E.email.focus();return}
+    if(Date.now()-t0<3000){say("Please take a moment and try again.","err");return}
+    btn.disabled=true;say("Sending…");
+    var data=Object.fromEntries(new FormData(f));
+    fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)})
+      .then(function(r){return r.json()})
+      .then(function(j){
+        if(j.success){f.reset();say("Thanks. Your message is on its way and we'll be in touch.","ok")}
+        else{say("The message didn't go through. Please try again in a minute.","err")}
+      })
+      .catch(function(){say("The message couldn't be sent from here. Please check your connection and try again.","err")})
+      .finally(function(){btn.disabled=false});
   });
 })();
 </script>
