@@ -8,15 +8,16 @@
 <meta property="og:image" content="https://behindtmd.com/og.png">
 <meta property="og:url" content="https://behindtmd.com/">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<style>:root{padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:light;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Behind the Meter Developments</title>
 <meta name="description" content="Behind the Meter Developments builds power, land and compute in the same place. Generation where it's needed. Behind the meter.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: horizon hero (source disc over a perspective grid), then a left-aligned reading column with wide bands for the big statements. */
+/* Light-only by brand choice. Layout: horizon hero (source disc over a perspective grid), then a left-aligned reading column with wide bands for the big statements. */
 :root{
   --bg:#e4e6e9;          /* silver ground */
   --paper:#f2f3f5;       /* card / lighter silver */
@@ -26,12 +27,10 @@
   --source:#e8771f;      /* source disc orange */
   --source-2:#ec8d45;
   --grid:#9aa1aa;
+  --steel:#d3d7dc;       /* mid-silver band, the lockup panel tone */
   --wide:"Archivo", "Arial", sans-serif;
   --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#141619;--paper:#1c1f23;--ink:#eceef0;--muted:#9aa1aa;--rule:#30353b;--source:#f0812b;--source-2:#f39a55;--grid:#4b525a;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#141619;--paper:#1c1f23;--ink:#eceef0;--muted:#9aa1aa;--rule:#30353b;--source:#f0812b;--source-2:#f39a55;--grid:#4b525a;color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -94,10 +93,10 @@ h3{font-family:var(--wide);font-stretch:110%;font-weight:700;font-size:21px;line
 .pillars p{margin:0;color:var(--muted)}
 
 /* Statement band */
-.band{background:var(--ink);color:var(--bg)}
+.band{background:linear-gradient(var(--steel),var(--bg))}
 .band .label{color:var(--source)}
-.band h2{color:var(--bg);max-width:22ch}
-.band p{color:var(--grid);max-width:58ch}
+.band h2{max-width:22ch}
+.band p{color:var(--muted);max-width:58ch}
 
 /* Neighbor diagram */
 .neighbors{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center}
