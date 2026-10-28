@@ -150,6 +150,10 @@ h3{font-family:var(--wide);font-stretch:110%;font-weight:700;font-size:21px;line
 .btn[disabled]{opacity:.6;cursor:wait}
 .side{display:grid;gap:14px;margin-top:28px;justify-items:start}
 
+.li{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border:1px solid var(--ink);padding:9px 12px;white-space:nowrap;flex:none}
+.li:hover{background:var(--ink);color:var(--bg)}
+.bar .wrap > nav{margin-left:auto}
+.foot-r{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 footer{border-top:1px solid var(--rule)}
 footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 
@@ -204,6 +208,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
         <a href="#notes">Field notes</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="li" href="https://www.linkedin.com/in/bo-scott" target="_blank" rel="noopener" aria-label="Behind the Meter Developments on LinkedIn">LinkedIn <span aria-hidden="true">↗</span></a>
     </div>
   </div>
   <svg class="art" id="horizon" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
@@ -483,7 +488,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
 
 <!-- ===================== ARTICLE: THREE QUESTIONS ===================== -->
 <div class="article" id="three-questions" hidden>
-  <div class="bar"><div class="wrap"><a class="home" href="#notes" aria-label="Back to home"><svg width="38" height="34"><use href="#mark"/></svg></a><a class="label" href="#notes" style="text-decoration:none">← All field notes</a></div></div>
+  <div class="bar"><div class="wrap"><a class="home" href="#notes" aria-label="Back to home"><svg width="38" height="34"><use href="#mark"/></svg></a><a class="label" href="#notes" style="text-decoration:none;margin-right:auto">← All field notes</a><a class="li" href="https://www.linkedin.com/in/bo-scott" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></div></div>
   <div class="wrap">
     <span class="label hot">Field note · Site selection</span>
     <h1>Before we buy a site, we ask three questions.</h1>
@@ -505,6 +510,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
       <div class="end">
         <a class="btn solid" href="#contact">Contact us</a>
         <a class="btn" href="#shrinking-box">Next note →</a>
+        <a class="btn" href="https://www.linkedin.com/in/bo-scott" target="_blank" rel="noopener">Share thoughts on LinkedIn ↗</a>
       </div>
     </div>
   </div>
@@ -512,7 +518,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
 
 <!-- ===================== ARTICLE: SHRINKING BOX ===================== -->
 <div class="article" id="shrinking-box" hidden>
-  <div class="bar"><div class="wrap"><a class="home" href="#notes" aria-label="Back to home"><svg width="38" height="34"><use href="#mark"/></svg></a><a class="label" href="#notes" style="text-decoration:none">← All field notes</a></div></div>
+  <div class="bar"><div class="wrap"><a class="home" href="#notes" aria-label="Back to home"><svg width="38" height="34"><use href="#mark"/></svg></a><a class="label" href="#notes" style="text-decoration:none;margin-right:auto">← All field notes</a><a class="li" href="https://www.linkedin.com/in/bo-scott" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></div></div>
   <div class="wrap">
     <span class="label hot">Field note · Building inside the rules</span>
     <h1>Everyone talks about the race for power. Nobody talks about what slows it down.</h1>
@@ -532,6 +538,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
       <div class="end">
         <a class="btn solid" href="#contact">Contact us</a>
         <a class="btn" href="#three-questions">← Previous note</a>
+        <a class="btn" href="https://www.linkedin.com/in/bo-scott" target="_blank" rel="noopener">Share thoughts on LinkedIn ↗</a>
       </div>
     </div>
   </div>
@@ -543,7 +550,10 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
       <svg width="34" height="30" aria-hidden="true"><use href="#mark"/></svg>
       <span class="wm" style="font-size:20px"><b>Behind</b><span>TMD</span></span>
     </a>
-    <span class="label">© 2026 Behind the Meter Developments</span>
+    <div class="foot-r">
+      <a class="li" href="https://www.linkedin.com/in/bo-scott" target="_blank" rel="noopener">Follow on LinkedIn <span aria-hidden="true">↗</span></a>
+      <span class="label">© 2026 Behind the Meter Developments</span>
+    </div>
   </div>
 </footer>
 
