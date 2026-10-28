@@ -3,13 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://behindtmd.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Behind the Meter Developments">
 <meta property="og:title" content="Behind the Meter Developments">
 <meta property="og:description" content="Generation where it's needed. Behind the meter. Land, power and compute in the same place.">
 <meta property="og:image" content="https://behindtmd.com/og.png">
 <meta property="og:url" content="https://behindtmd.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#e4e6e9">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Behind the Meter Developments", "alternateName": "BehindTMD", "url": "https://behindtmd.com/", "logo": "https://behindtmd.com/favicon.svg", "slogan": "Generation where it's needed. Behind the meter.", "description": "Behind the Meter Developments builds behind-the-meter power, land and compute campuses: on-site generation and powered shells in the same place.", "sameAs": ["https://www.linkedin.com/in/bo-scott"], "founder": {"@type": "Person", "name": "Bo Scott"}}</script>
 <style>:root{color-scheme:light;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Behind the Meter Developments</title>
 <meta name="description" content="Behind the Meter Developments builds power, land and compute in the same place. Generation where it's needed. Behind the meter.">
@@ -57,12 +62,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--source);outline-off
 
 /* Hero */
 .hero{position:relative;overflow:hidden;background:linear-gradient(var(--paper),var(--bg) 70%)}
-.hero svg.art{display:block;width:100%;height:clamp(460px,58vw,780px)}
+.hero svg.art{display:block;width:100%;height:clamp(560px,60vw,860px)}
 .hero .copy{position:absolute;inset:auto 0 0;padding-bottom:clamp(28px,4vw,56px)}
 .hero .copy .wrap{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
 .hero h1{margin:0;font-size:clamp(46px,9.6vw,150px)}
 .hero .tag{font-size:clamp(17px,1.7vw,22px);color:var(--muted);margin:16px 0 0}
-.hero .meta{text-align:right;display:grid;gap:12px}
+.hero .meta{text-align:right;display:grid;gap:12px;justify-items:end;margin-left:auto}
 
 /* Sections */
 section{border-top:1px solid var(--rule)}
@@ -165,7 +170,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
   .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
   .qs,.triad{grid-template-columns:1fr}
   .bar nav{display:none}
-  .hero .meta{text-align:left}
+  .hero .meta{text-align:left;justify-items:start;margin-left:0}
 }
 @media (max-width:600px){
   .pillars,.vs,.notes{grid-template-columns:1fr}
@@ -201,17 +206,23 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
       </nav>
     </div>
   </div>
-  <svg class="art" id="horizon" viewBox="0 0 1440 780" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <svg class="art" id="horizon" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
       <linearGradient id="disc" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="var(--source)"/>
         <stop offset="1" stop-color="var(--source-2)"/>
       </linearGradient>
+      <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity=".15"/>
+        <stop offset=".35" stop-color="#fff" stop-opacity="1"/>
+        <stop offset="1" stop-color="#fff" stop-opacity=".35"/>
+      </linearGradient>
+      <mask id="gridmask"><rect x="0" y="400" width="1440" height="460" fill="url(#fade)"/></mask>
     </defs>
-    <g id="rings" fill="none" stroke="var(--source)" stroke-opacity=".22"></g>
-    <path d="M800 480 A210 210 0 0 1 1220 480 Z" fill="url(#disc)"/>
-    <g id="grid" stroke="var(--grid)" stroke-opacity=".45" stroke-width="1"></g>
-    <line x1="0" y1="480" x2="1440" y2="480" stroke="var(--ink)" stroke-width="2"/>
+    <g id="rings" fill="none" stroke="var(--source)" stroke-opacity=".2"></g>
+    <path id="sun" fill="url(#disc)"/>
+    <g id="grid" stroke="var(--grid)" stroke-width="1" mask="url(#gridmask)"></g>
+    <line x1="0" y1="400" x2="1440" y2="400" stroke="var(--ink)" stroke-width="2"/>
     <g id="gauge" stroke="var(--ink)" stroke-width="2"></g>
   </svg>
   <div class="copy">
@@ -538,20 +549,21 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
 
 <script>
 (function(){
-  var NS="http://www.w3.org/2000/svg", cx=1010, hy=480;
+  var NS="http://www.w3.org/2000/svg", hy=400, R=210;
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
-  // rings
-  var rings=document.getElementById("rings");
-  for(var i=1;i<=7;i++){var r=210+i*46;rings.appendChild(el("path",{d:"M"+(cx-r)+" "+hy+" A"+r+" "+r+" 0 0 1 "+(cx+r)+" "+hy}))}
-  // perspective grid below horizon
-  var g=document.getElementById("grid");
-  for(var x=-2400;x<=3840;x+=80){g.appendChild(el("line",{x1:cx,y1:hy,x2:x,y2:780}))}
-  for(var j=1;j<=9;j++){var y=hy+Math.pow(j/9,1.8)*300;g.appendChild(el("line",{x1:0,y1:y,x2:1440,y2:y,"stroke-opacity":.5}))}
-  // gauge needle with ticks
-  var ga=document.getElementById("gauge");
-  ga.appendChild(el("line",{x1:cx,y1:210,x2:cx,y2:560}));
-  ga.appendChild(el("line",{x1:cx-8,y1:210,x2:cx+8,y2:210}));
-  for(var t=1;t<=6;t++){var ty=210+t*38;ga.appendChild(el("line",{x1:cx-8,y1:ty,x2:cx+8,y2:ty}))}
+  var rings=document.getElementById("rings"), g=document.getElementById("grid"), ga=document.getElementById("gauge"), sun=document.getElementById("sun");
+  function draw(){
+    var cx=window.innerWidth<700?720:1010;
+    rings.innerHTML="";g.innerHTML="";ga.innerHTML="";
+    sun.setAttribute("d","M"+(cx-R)+" "+hy+" A"+R+" "+R+" 0 0 1 "+(cx+R)+" "+hy+" Z");
+    for(var i=1;i<=7;i++){var r=R+i*46;rings.appendChild(el("path",{d:"M"+(cx-r)+" "+hy+" A"+r+" "+r+" 0 0 1 "+(cx+r)+" "+hy}))}
+    for(var k=-24;k<=24;k++){var x=cx+k*k*Math.sign(k)*14+k*60;g.appendChild(el("line",{x1:cx,y1:hy,x2:x,y2:860,"stroke-opacity":.35}))}
+    for(var j=1;j<=10;j++){var y=hy+Math.pow(j/10,2)*460;g.appendChild(el("line",{x1:0,y1:y,x2:1440,y2:y,"stroke-opacity":.3}))}
+    ga.appendChild(el("line",{x1:cx,y1:150,x2:cx,y2:hy+70}));
+    ga.appendChild(el("line",{x1:cx-8,y1:150,x2:cx+8,y2:150}));
+    for(var t=1;t<=6;t++){var ty=150+t*36;ga.appendChild(el("line",{x1:cx-8,y1:ty,x2:cx+8,y2:ty}))}
+  }
+  draw(); var rt; window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,150)});
 
   // views
   var home=document.getElementById("home-view"), arts=["three-questions","shrinking-box"];
