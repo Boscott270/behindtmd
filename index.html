@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Behind the Meter Developments">
+<meta property="og:description" content="Generation where it's needed. Behind the meter. Land, power and compute in the same place.">
+<meta property="og:image" content="https://behindtmd.com/og.png">
+<meta property="og:url" content="https://behindtmd.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>:root{padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Behind the Meter Developments</title>
+<meta name="description" content="Behind the Meter Developments builds power, land and compute in the same place. Generation where it's needed. Behind the meter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: horizon hero (source disc over a perspective grid), then a left-aligned reading column with wide bands for the big statements. */
+:root{
+  --bg:#e4e6e9;          /* silver ground */
+  --paper:#f2f3f5;       /* card / lighter silver */
+  --ink:#16181c;         /* graphite */
+  --muted:#5b6169;
+  --rule:#c3c7cd;
+  --source:#e8771f;      /* source disc orange */
+  --source-2:#ec8d45;
+  --grid:#9aa1aa;
+  --wide:"Archivo", "Arial", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141619;--paper:#1c1f23;--ink:#eceef0;--muted:#9aa1aa;--rule:#30353b;--source:#f0812b;--source-2:#f39a55;--grid:#4b525a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141619;--paper:#1c1f23;--ink:#eceef0;--muted:#9aa1aa;--rule:#30353b;--source:#f0812b;--source-2:#f39a55;--grid:#4b525a;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font:17px/1.62 var(--wide);font-stretch:100%}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--source);outline-offset:3px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.label.hot{color:var(--source)}
+
+/* Wordmark */
+.wm{font-family:var(--wide);font-stretch:118%;letter-spacing:-.02em;text-transform:uppercase;line-height:.9;white-space:nowrap}
+.wm b{font-weight:700}
+.wm span{font-weight:300}
+
+/* Top bar */
+.bar{position:absolute;inset:0 0 auto;z-index:2}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:28px}
+.bar .home{display:flex;align-items:center;gap:12px;text-decoration:none}
+.bar nav{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
+.bar nav a{font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.bar nav a:hover{color:var(--ink)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(var(--paper),var(--bg) 70%)}
+.hero svg.art{display:block;width:100%;height:clamp(460px,58vw,780px)}
+.hero .copy{position:absolute;inset:auto 0 0;padding-bottom:clamp(28px,4vw,56px)}
+.hero .copy .wrap{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.hero h1{margin:0;font-size:clamp(46px,9.6vw,150px)}
+.hero .tag{font-size:clamp(17px,1.7vw,22px);color:var(--muted);margin:16px 0 0}
+.hero .meta{text-align:right;display:grid;gap:12px}
+
+/* Sections */
+section{border-top:1px solid var(--rule)}
+section > .wrap{padding-block:clamp(56px,8vw,104px)}
+h2{font-family:var(--wide);font-stretch:112%;font-weight:700;font-size:clamp(32px,4.6vw,56px);line-height:1.02;letter-spacing:-.02em;margin:14px 0 24px;max-width:18ch;text-wrap:balance}
+h3{font-family:var(--wide);font-stretch:110%;font-weight:700;font-size:21px;line-height:1.2;letter-spacing:-.01em;margin:0 0 10px}
+.prose{max-width:64ch}
+.prose p{margin:0 0 16px}
+.lead{font-size:clamp(19px,1.8vw,23px);line-height:1.5;color:var(--ink);max-width:56ch}
+.muted{color:var(--muted)}
+
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px)}
+
+/* Triad: land power shell */
+.triad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:40px}
+.triad div{background:var(--paper);padding:28px}
+.triad .wm{font-size:28px;display:block;margin-bottom:12px}
+
+/* Process */
+.steps{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:0;counter-reset:s}
+.steps li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid var(--rule);counter-increment:s}
+.steps li::before{content:counter(s,decimal-leading-zero);font:500 13px/1.6 var(--mono);color:var(--source);letter-spacing:.1em}
+.steps p{margin:0;color:var(--muted);max-width:62ch}
+
+/* Pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 36px;margin-top:44px}
+.pillars .label{display:block;margin-bottom:12px}
+.pillars p{margin:0;color:var(--muted)}
+
+/* Statement band */
+.band{background:var(--ink);color:var(--bg)}
+.band .label{color:var(--source)}
+.band h2{color:var(--bg);max-width:22ch}
+.band p{color:var(--grid);max-width:58ch}
+
+/* Neighbor diagram */
+.neighbors{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center}
+.neighbors svg{width:100%;height:auto;display:block}
+
+/* Three questions */
+.qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:40px}
+.qs div{border-top:3px solid var(--ink);padding-top:18px}
+.qs .n{font:500 12px/1 var(--mono);color:var(--source);letter-spacing:.14em}
+.qs h3{margin-top:12px}
+.qs p{margin:0;color:var(--muted)}
+
+/* Contrast */
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:40px}
+.vs div{background:var(--paper);padding:28px}
+.vs ul{margin:12px 0 0;padding-left:18px}
+.vs li{margin-bottom:8px}
+.vs .ours .label{color:var(--source)}
+
+/* Notes */
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
+.note{display:block;text-decoration:none;background:var(--paper);border:1px solid var(--rule);padding:30px;transition:border-color .2s}
+.note:hover{border-color:var(--source)}
+.note h3{font-size:24px;margin:14px 0 12px}
+.note p{margin:0 0 18px;color:var(--muted)}
+.note .more{font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--source)}
+
+/* Contact */
+.contact .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end}
+.mailrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.mail{font-family:var(--wide);font-stretch:115%;font-weight:600;font-size:clamp(22px,2.6vw,32px);letter-spacing:-.01em;text-decoration:none;border-bottom:2px solid var(--source)}
+.btn{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;background:transparent;color:var(--ink);border:1px solid var(--ink);padding:12px 16px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.solid{background:var(--source);border-color:var(--source);color:#fff}
+.btn.solid:hover{filter:brightness(1.06);background:var(--source);color:#fff}
+
+footer{border-top:1px solid var(--rule)}
+footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+
+/* Article view */
+.article .wrap{padding-block:clamp(120px,14vw,170px) 80px}
+.article h1{font-family:var(--wide);font-stretch:112%;font-weight:700;font-size:clamp(34px,5vw,64px);line-height:1.02;letter-spacing:-.02em;margin:16px 0 32px;max-width:20ch;text-wrap:balance}
+.article .body{max-width:64ch;font-size:19px}
+.article .body p{margin:0 0 20px}
+.article .body h3{margin:36px 0 10px;font-size:22px}
+.article .pull{font-family:var(--wide);font-stretch:112%;font-weight:700;font-size:clamp(24px,2.6vw,32px);line-height:1.15;border-left:4px solid var(--source);padding-left:20px;margin:36px 0}
+.article .sign{font:500 13px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:40px}
+.article .end{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:28px;border-top:1px solid var(--rule)}
+.article .bar{position:absolute}
+
+@media (max-width:900px){
+  .split,.neighbors,.contact .wrap{grid-template-columns:1fr}
+  .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .qs,.triad{grid-template-columns:1fr}
+  .bar nav{display:none}
+  .hero .meta{text-align:left}
+}
+@media (max-width:600px){
+  .pillars,.vs,.notes{grid-template-columns:1fr}
+  .steps li{grid-template-columns:44px minmax(0,1fr);gap:12px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mark" viewBox="0 0 64 56">
+      <path d="M8 44 A24 24 0 0 1 56 44 Z" fill="var(--source)"/>
+      <rect x="30.5" y="4" width="3" height="40" fill="var(--ink)"/>
+      <rect x="2" y="44" width="60" height="3.2" fill="var(--ink)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===================== HOME ===================== -->
+<div id="home-view">
+<div class="hero" id="top">
+  <div class="bar">
+    <div class="wrap">
+      <a class="home" href="#top" aria-label="Behind the Meter Developments home"><svg width="38" height="34"><use href="#mark"/></svg></a>
+      <nav aria-label="Sections">
+        <a href="#approach">Approach</a>
+        <a href="#build">How we build</a>
+        <a href="#standards">Standards</a>
+        <a href="#neighbors">Neighbors</a>
+        <a href="#notes">Field notes</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+  <svg class="art" id="horizon" viewBox="0 0 1440 780" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="disc" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="var(--source)"/>
+        <stop offset="1" stop-color="var(--source-2)"/>
+      </linearGradient>
+    </defs>
+    <g id="rings" fill="none" stroke="var(--source)" stroke-opacity=".22"></g>
+    <path d="M800 480 A210 210 0 0 1 1220 480 Z" fill="url(#disc)"/>
+    <g id="grid" stroke="var(--grid)" stroke-opacity=".45" stroke-width="1"></g>
+    <line x1="0" y1="480" x2="1440" y2="480" stroke="var(--ink)" stroke-width="2"/>
+    <g id="gauge" stroke="var(--ink)" stroke-width="2"></g>
+  </svg>
+  <div class="copy">
+    <div class="wrap">
+      <div>
+        <h1 class="wm"><b>Behind</b><span>TMD</span></h1>
+        <p class="tag">Generation where it's needed. Behind the meter.</p>
+      </div>
+      <div class="meta">
+        <span class="label" style="color:var(--ink)">Generation · Land · Compute</span>
+        <span class="label">behindtmd.com</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="approach">
+  <div class="wrap split">
+    <div>
+      <span class="label hot">Behind the meter</span>
+      <h2>Land. Power. Shell. In the same place.</h2>
+    </div>
+    <div class="prose">
+      <p class="lead">Most data centers buy their power through a utility meter and wait years in line for the grid to deliver it. We build the generation on the same ground as the load.</p>
+      <p>Behind the meter means the power plant and the data center share a fence line. Electricity moves from the turbine to the bus to the building without waiting on someone else's transmission line. The grid becomes a backup, not a bottleneck.</p>
+      <p>That changes everything about how fast a site comes online, what the power costs, and who controls the schedule. We do.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:0">
+    <div class="triad">
+      <div><span class="wm"><b>Land</b></span><p class="muted" style="margin:0">Assembled quietly and legally, with water, access and room to grow already worked out.</p></div>
+      <div><span class="wm"><b>Power</b></span><p class="muted" style="margin:0">On-site generation tuned like a race engine, with storage that pushes energy back when it pays.</p></div>
+      <div><span class="wm"><b>Shell</b></span><p class="muted" style="margin:0">Powered shells: buildings delivered with power, cooling and fiber in place, ready for the tenant's fit-out.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="shells">
+  <div class="wrap split">
+    <div>
+      <span class="label hot">Power shells</span>
+      <h2>A building that arrives with its power already on.</h2>
+    </div>
+    <div class="prose">
+      <p>A power shell is the structure, the electrical service, the cooling plant and the connectivity, finished and energized before a tenant moves in. The tenant brings the compute. We bring everything it needs to run on day one.</p>
+      <p>Because our shells sit behind the meter, the capacity a tenant is promised is capacity we generate and control. No waiting on a utility study. No surprise upgrade bill. The date we give is the date the lights come on.</p>
+      <p>We build them modular. Shells go up in pieces, power blocks are added as load grows, and every block is built to the same tested standard, so the tenth one goes up faster and cleaner than the first.</p>
+    </div>
+  </div>
+</section>
+
+<section id="build">
+  <div class="wrap">
+    <span class="label hot">How we develop a site</span>
+    <h2>We know what we're up against before we spend a dime.</h2>
+    <p class="lead">Every site is fine-tuned before ground is broken. Land, rules, people, water, sound and light are worked out up front, so the build is the easy part.</p>
+    <ol class="steps">
+      <li><div><h3>Prove the power is real</h3><p>A transmission line nearby is not a site. We find out whether the capacity is already promised, what substation work it takes, what it costs, and who pays.</p></div></li>
+      <li><div><h3>Get a date we can stand behind</h3><p>We track the real path to energization: studies, transformer lead times, permits, zoning and easements. A vague estimate is not a schedule.</p></div></li>
+      <li><div><h3>Assemble the land quietly and legally</h3><p>We put parcels together without tipping off the market, so prices don't jump for everyone, including us.</p></div></li>
+      <li><div><h3>Solve concerns before the hearing</h3><p>We meet neighbors, regulators and the land itself early. Real concerns get solved in the plan, not argued about later.</p></div></li>
+      <li><div><h3>Plan for seamless integration</h3><p>Sound, light, water, traffic and planting are designed together so the campus fits the land around it instead of standing out against it.</p></div></li>
+      <li><div><h3>Build modular, with suppliers who keep their word</h3><p>Our suppliers deliver as promised. If they're late, they carry the cost lateness causes, because our investors' money depends on those dates.</p></div></li>
+      <li><div><h3>Tune it and keep tuning</h3><p>Once running, every block is measured and adjusted for fuel, air, heat and load. We build like it's an endurance race, not a sprint.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="energy">
+  <div class="wrap split">
+    <div>
+      <span class="label">How we use energy</span>
+      <h2>We think about a power plant the way we think about a race engine.</h2>
+    </div>
+    <div class="prose">
+      <p>You tune it. You get the most out of every bit of fuel. You move air the right way. You bring the heat down. You catch the energy other people throw away.</p>
+      <p>We store energy where it's needed and push it back to the plant when it pays, flattening peaks so the turbines run in their sweet spot and overall costs come down. We use the earth's own cooling instead of fighting it, and we put solar on every square inch of wall we can use.</p>
+      <p>Less waste. Less heat. Less land torn up. Less, done right, beats more, done fast.</p>
+    </div>
+  </div>
+</section>
+
+<section id="standards">
+  <div class="wrap">
+    <span class="label hot">Our standards</span>
+    <h2>We come in clean and we stay clean.</h2>
+    <p class="lead">Our standards are above what the permit asks for. These are the ones we hold every site to.</p>
+    <div class="pillars">
+      <div><span class="label hot">Closed-loop cooling</span><h3>The water stays in the loop.</h3><p>We believe in closed-loop cooling systems. Coolant circulates and returns instead of evaporating into the sky.</p></div>
+      <div><span class="label hot">Heat transfer</span><h3>Wetter water, cooler halls.</h3><p>Wetting agents, the same idea as Water Wetter in a race radiator, help coolant grab heat faster so the loop does more work with less flow.</p></div>
+      <div><span class="label hot">Water returned</span><h3>Cleaner than we found it.</h3><p>Any water that leaves one of our plants goes back into the environment cleaner than when we got it. That is our standard, not a goal.</p></div>
+      <div><span class="label hot">Graphene</span><h3>Advanced materials where they earn it.</h3><p>We use graphene where it's needed: places where better heat transfer, strength or service life pays for itself. Not everywhere, and not for show.</p></div>
+      <div><span class="label hot">Harsh-climate tested</span><h3>If it works in the dust, it works anywhere.</h3><p>We test in the harshest, driest climates on purpose. Equipment and designs that survive the heat and the dust earn a place in our standard block.</p></div>
+      <div><span class="label hot">Storage</span><h3>Energy stored where it's used.</h3><p>Storage sits at the load, ready to shave peaks and feed the plant back, so we size generation for real demand instead of the worst hour.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="neighbors">
+  <div class="wrap neighbors">
+    <div>
+      <span class="label hot">Good neighbors</span>
+      <h2>We want to exist without annoying anyone, including the environment.</h2>
+      <div class="prose">
+        <p><strong>We don't light up the night sky.</strong> Lighting stays low and aimed only where it's needed. We protect the views around our sites from overuse of light.</p>
+        <p><strong>We surround our plants with nature.</strong> Tree lines, bush lines and low grasses absorb sound before it leaves the property. We plant species native to each site, so the campus fits the land.</p>
+        <p><strong>We give back.</strong> The communities that host us share in what we build, through local jobs, local suppliers and real investment in the place.</p>
+      </div>
+    </div>
+    <svg viewBox="0 0 520 380" role="img" aria-labelledby="nbt">
+      <title id="nbt">Cross-section of a site: building at center with downward-aimed lights, surrounded by grasses, bushes and a tree line that absorb sound before it reaches the property line</title>
+      <g font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="1.5" fill="var(--muted)">
+        <!-- sky glow none -->
+        <text x="260" y="22" text-anchor="middle">NIGHT SKY · NO UPLIGHT</text>
+        <line x1="20" y1="300" x2="500" y2="300" stroke="var(--ink)" stroke-width="2"/>
+        <!-- building -->
+        <rect x="200" y="210" width="120" height="90" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+        <text x="260" y="262" text-anchor="middle" fill="var(--ink)">POWER SHELL</text>
+        <!-- downlights -->
+        <line x1="210" y1="210" x2="210" y2="196" stroke="var(--ink)" stroke-width="2"/>
+        <line x1="310" y1="210" x2="310" y2="196" stroke="var(--ink)" stroke-width="2"/>
+        <path d="M204 196 h12 l14 40 h-40 z" fill="var(--source)" fill-opacity=".18"/>
+        <path d="M304 196 h12 l14 40 h-40 z" fill="var(--source)" fill-opacity=".18"/>
+        <!-- sound waves, damped -->
+        <g fill="none" stroke="var(--source)" stroke-width="1.5">
+          <path d="M330 250 q10 -12 0 -24" opacity=".9"/>
+          <path d="M344 256 q16 -18 0 -36" opacity=".6"/>
+          <path d="M358 262 q20 -24 0 -48" opacity=".3"/>
+          <path d="M190 250 q-10 -12 0 -24" opacity=".9"/>
+          <path d="M176 256 q-16 -18 0 -36" opacity=".6"/>
+          <path d="M162 262 q-20 -24 0 -48" opacity=".3"/>
+        </g>
+        <!-- grasses -->
+        <g stroke="var(--grid)" stroke-width="1.5">
+          <path d="M372 300 l-3 -12 M378 300 l0 -14 M384 300 l3 -12 M136 300 l-3 -12 M142 300 l0 -14 M148 300 l3 -12"/>
+        </g>
+        <!-- bushes -->
+        <circle cx="410" cy="288" r="13" fill="var(--grid)" fill-opacity=".55"/>
+        <circle cx="110" cy="288" r="13" fill="var(--grid)" fill-opacity=".55"/>
+        <!-- trees -->
+        <g fill="var(--grid)" fill-opacity=".85">
+          <path d="M455 300 v-28 M65 300 v-28" stroke="var(--ink)" stroke-width="2"/>
+          <ellipse cx="455" cy="248" rx="22" ry="34"/>
+          <ellipse cx="65" cy="248" rx="22" ry="34"/>
+        </g>
+        <text x="65" y="326" text-anchor="middle">TREE LINE</text>
+        <text x="110" y="344" text-anchor="middle">BUSH LINE</text>
+        <text x="142" y="326" text-anchor="middle">GRASS</text>
+        <text x="455" y="326" text-anchor="middle">TREE LINE</text>
+        <text x="410" y="344" text-anchor="middle">BUSH LINE</text>
+        <text x="378" y="326" text-anchor="middle">GRASS</text>
+        <line x1="20" y1="366" x2="500" y2="366" stroke="var(--rule)" stroke-dasharray="3 4"/>
+        <text x="260" y="378" text-anchor="middle">NATIVE PLANTING TO THE PROPERTY LINE</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="wrap">
+    <span class="label hot">Before we buy a site</span>
+    <h2>We answer three questions before we ask anyone to believe in it.</h2>
+    <div class="qs">
+      <div><span class="n">Q1</span><h3>Is the power really there, and can we use it?</h3><p>If we can't say what the substation work costs and who pays, we don't have a site. We have a hope.</p></div>
+      <div><span class="n">Q2</span><h3>When will the power actually turn on?</h3><p>A gigawatt doesn't help a tenant if it takes years to connect. We want a date we can stand behind.</p></div>
+      <div><span class="n">Q3</span><h3>How do we buy the land quietly and legally?</h3><p>When word gets out, prices jump before a deal is done. We assemble land without tipping off the market.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="different">
+  <div class="wrap">
+    <span class="label hot">Why we're different</span>
+    <h2>We build like it's a long endurance race.</h2>
+    <p class="lead">Sprinters win the first lap. Endurance teams win the race. We plan for the full distance: the hearing, the build, and the decades of running after the ribbon is cut.</p>
+    <div class="vs">
+      <div>
+        <span class="label">The fast-money playbook</span>
+        <ul>
+          <li>One goal: as fast as possible</li>
+          <li>Throw money at problems, promise whatever gets a yes</li>
+          <li>Runs over budget and late, burning investor money while it waits</li>
+          <li>No relationships with the land, the neighbors or the county</li>
+        </ul>
+      </div>
+      <div class="ours">
+        <span class="label">Behind the Meter</span>
+        <ul>
+          <li>Know the land, the rules and the people before spending a dime</li>
+          <li>Solve opposition before it reaches a public hearing</li>
+          <li>Suppliers who stand behind their dates, and pay when they miss</li>
+          <li>Built right the first time, built to last</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="wrap">
+    <span class="label hot">Field notes</span>
+    <h2>Written by the people building it.</h2>
+    <div class="notes">
+      <a class="note" href="#three-questions">
+        <span class="label">Site selection</span>
+        <h3>Before we buy a site, we ask three questions.</h3>
+        <p>Power that's really there, a date we can stand behind, and land assembled quietly and legally. Plus why we plant tree lines and keep the sky dark.</p>
+        <span class="more">Read the note →</span>
+      </a>
+      <a class="note" href="#shrinking-box">
+        <span class="label">Building inside the rules</span>
+        <h3>Everyone talks about the race for power. Nobody talks about what slows it down.</h3>
+        <p>Paperwork, the shrinking box, and why less, done right, beats more, done fast.</p>
+        <span class="more">Read the note →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="label hot">Long-term investors</span>
+      <h2>Not the fast-money kind. The kind who wants it built to last.</h2>
+      <p class="lead" style="margin-bottom:24px">If you want your money in something real, built right, let's talk.</p>
+      <div class="mailrow">
+        <a class="mail" href="mailto:bo@behindtmd.com">bo@behindtmd.com</a>
+        <button class="btn" type="button" data-copy="bo@behindtmd.com">Copy email</button>
+      </div>
+    </div>
+    <div style="display:grid;gap:12px;justify-items:start">
+      <span class="label">Also on LinkedIn</span>
+      <a class="btn solid" href="https://www.linkedin.com/in/bo-scott" target="_blank" rel="noopener">Bo Scott on LinkedIn</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ===================== ARTICLE: THREE QUESTIONS ===================== -->
+<div class="article" id="three-questions" hidden>
+  <div class="bar"><div class="wrap"><a class="home" href="#notes" aria-label="Back to home"><svg width="38" height="34"><use href="#mark"/></svg></a><a class="label" href="#notes" style="text-decoration:none">← All field notes</a></div></div>
+  <div class="wrap">
+    <span class="label hot">Field note · Site selection</span>
+    <h1>Before we buy a site, we ask three questions.</h1>
+    <div class="body">
+      <h3>1. Is the power really there, and can we actually use it?</h3>
+      <p>A transmission line nearby does not mean we can pull power from it. Has that capacity already been promised to someone else? What substation work is needed? What will it cost? Who pays for it? If we cannot answer that, we do not have a site. We have a hope.</p>
+      <h3>2. When will the power actually turn on?</h3>
+      <p>A gigawatt does not help a tenant if it takes years to connect. We track the real steps. The studies. The equipment. Transformers take a long time to build. Permits, zoning, and easements take time too. We want a date we can stand behind, not a vague estimate.</p>
+      <h3>3. How do we buy the land quietly and legally?</h3>
+      <p>When word gets out that a big project is coming, prices jump before a deal is done. So we put land together quietly and legally, without tipping off the market and driving up the price for everyone, including us.</p>
+      <p>At Behind The Meter, we answer all three before we ask anyone else to believe in a site.</p>
+      <p>We also do more work up front for a reason. We try to remove opposition before it ever gets to a public hearing. That means solving real concerns early, not arguing about them later. Neighbors, regulators, and the land itself.</p>
+      <p>That includes the night sky. We do not light up the sky. We keep lighting low and aimed where it is needed. We want to exist without annoying anyone, including the environment.</p>
+      <p>We also surround our power plants and data centers with nature. Tree lines, bush lines, and low lying grasses help kill off sound. Wherever we go, we plant native species for that site, so the place fits the land around it instead of standing out against it.</p>
+      <p>And we work with suppliers who deliver as promised. If they are late, they pay for the cost that lateness causes us. That matters, because when we take on an investor, we have to pay that money back. So we build relationships with people who understand that, and who stand behind their dates.</p>
+      <p class="pull">Land. Power. Shell. In the same place. Built right, built to last.</p>
+      <p>If you are a long term investor, please contact us. Let's talk.</p>
+      <p class="sign">Behind The Meter Developments</p>
+      <div class="end">
+        <a class="btn solid" href="#contact">Contact us</a>
+        <a class="btn" href="#shrinking-box">Next note →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ARTICLE: SHRINKING BOX ===================== -->
+<div class="article" id="shrinking-box" hidden>
+  <div class="bar"><div class="wrap"><a class="home" href="#notes" aria-label="Back to home"><svg width="38" height="34"><use href="#mark"/></svg></a><a class="label" href="#notes" style="text-decoration:none">← All field notes</a></div></div>
+  <div class="wrap">
+    <span class="label hot">Field note · Building inside the rules</span>
+    <h1>Everyone talks about the race for power. Nobody talks about what slows it down.</h1>
+    <div class="body">
+      <p class="pull">Paperwork slows it down.</p>
+      <p>Say a man has a piece of land. He wants to build power on it. Real power, for real jobs. He even wants to catch the gases that come off the plant and keep them out of the air. You would think that gets a green light.</p>
+      <p>It does not. It gets forms. Studies. Hearings. Years of them. Every agency has a rule, and every rule has a fee, and by the time you are done paying for permission, the project costs twice what it should. That extra cost does not make the power cleaner. It does not make it stronger. It just makes it late, and it makes it cost more for everyone at the end of the line.</p>
+      <p>When you are bound by every stinking rule, you learn to work inside a box. And the box keeps getting smaller. That is where the real work is now — finding a way to make gigawatts and run data centers inside that shrinking box, without cutting corners and without wasting money.</p>
+      <p>At Behind The Meter, we think about a power plant the same way we think about a race engine. You tune it. You get the most out of every bit of fuel. You move air the right way. You bring the heat down. You catch energy other people throw away.</p>
+      <p>We test in the harsh places on purpose. If it works in the heat and the dust, it works anywhere.</p>
+      <p>We are focused on less, not more. Less waste. Less heat. Less land torn up. Modular builds that go up in pieces. The earth's own cooling instead of fighting it. Solar on every square inch of wall we can use. Power and data living in the same place, without lighting up the whole sky.</p>
+      <p>That is not how the big money plays it. The hyperscalers show up with one goal: fast as possible. They do not build relationships. They throw money at problems and promise whatever it takes to get a yes. Then the project runs over budget, runs late, and burns investor money for years, hoping it all works out once the money starts coming in. Sometimes it does. A lot of times it does not.</p>
+      <p>We would rather know what we are up against before we spend a dime. Know the land. Know the rules. Know the people. Build it right the first time.</p>
+      <p class="pull">Less, done right, beats more, done fast. Every time.</p>
+      <p>And if you are an investor reading this — we are looking for you. Not the fast-money kind. The kind who wants their money in something real, built right, built to last. Please contact us. Let's talk.</p>
+      <p class="sign">— Behind The Meter Developments</p>
+      <div class="end">
+        <a class="btn solid" href="#contact">Contact us</a>
+        <a class="btn" href="#three-questions">← Previous note</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" style="text-decoration:none;display:flex;align-items:center;gap:14px">
+      <svg width="34" height="30" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="wm" style="font-size:20px"><b>Behind</b><span>TMD</span></span>
+    </a>
+    <span class="label">© 2026 Behind the Meter Developments · bo@behindtmd.com</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var NS="http://www.w3.org/2000/svg", cx=1010, hy=480;
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
+  // rings
+  var rings=document.getElementById("rings");
+  for(var i=1;i<=7;i++){var r=210+i*46;rings.appendChild(el("path",{d:"M"+(cx-r)+" "+hy+" A"+r+" "+r+" 0 0 1 "+(cx+r)+" "+hy}))}
+  // perspective grid below horizon
+  var g=document.getElementById("grid");
+  for(var x=-2400;x<=3840;x+=80){g.appendChild(el("line",{x1:cx,y1:hy,x2:x,y2:780}))}
+  for(var j=1;j<=9;j++){var y=hy+Math.pow(j/9,1.8)*300;g.appendChild(el("line",{x1:0,y1:y,x2:1440,y2:y,"stroke-opacity":.5}))}
+  // gauge needle with ticks
+  var ga=document.getElementById("gauge");
+  ga.appendChild(el("line",{x1:cx,y1:210,x2:cx,y2:560}));
+  ga.appendChild(el("line",{x1:cx-8,y1:210,x2:cx+8,y2:210}));
+  for(var t=1;t<=6;t++){var ty=210+t*38;ga.appendChild(el("line",{x1:cx-8,y1:ty,x2:cx+8,y2:ty}))}
+
+  // views
+  var home=document.getElementById("home-view"), arts=["three-questions","shrinking-box"];
+  function route(){
+    var h=location.hash.slice(1), isArt=arts.indexOf(h)>-1;
+    home.hidden=isArt;
+    arts.forEach(function(a){document.getElementById(a).hidden=(a!==h)});
+    if(isArt){window.scrollTo(0,0)}
+    else if(h){var t=document.getElementById(h); if(t) requestAnimationFrame(function(){t.scrollIntoView()})}
+  }
+  window.addEventListener("hashchange",route); route();
+
+  // copy email
+  document.querySelectorAll("[data-copy]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var v=b.getAttribute("data-copy"), lbl=b.textContent;
+      function done(){b.textContent="Copied";setTimeout(function(){b.textContent=lbl},1600)}
+      try{navigator.clipboard.writeText(v).then(done,function(){sel()})}catch(e){sel()}
+      function sel(){var m=document.querySelector(".mail");var r=document.createRange();r.selectNodeContents(m);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
