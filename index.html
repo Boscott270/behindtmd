@@ -14,10 +14,10 @@
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#e4e6e9">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Behind the Meter Developments", "alternateName": "BehindTMD", "url": "https://behindtmd.com/", "logo": "https://behindtmd.com/favicon.svg", "slogan": "Generation where it's needed. Behind the meter.", "description": "Behind the Meter Developments builds behind-the-meter power, land and compute campuses: on-site generation and powered shells in the same place.", "sameAs": ["https://www.linkedin.com/company/behind-the-meter-developments/"], "founder": {"@type": "Person", "name": "Bo Scott"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Behind the Meter Developments", "alternateName": "BehindTMD", "url": "https://behindtmd.com/", "logo": "https://behindtmd.com/favicon.svg", "slogan": "Generation where it's needed. Behind the meter.", "description": "Behind the Meter Developments builds reliable American power generation and the infrastructure that runs on it, delivered behind the meter.", "sameAs": ["https://www.linkedin.com/company/behind-the-meter-developments/"], "founder": {"@type": "Person", "name": "Bo Scott"}}</script>
 <style>:root{color-scheme:light;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Behind the Meter Developments</title>
-<meta name="description" content="Behind the Meter Developments builds power, land and compute in the same place. Generation where it's needed. Behind the meter.">
+<meta name="description" content="Behind the Meter Developments builds reliable American power generation and the infrastructure that runs on it. Project Meridian: 1.13 GW natural gas phase one, designed to scale to 5 GW.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -84,7 +84,8 @@ h3{font-family:var(--wide);font-stretch:110%;font-weight:700;font-size:21px;line
 /* Triad: land power shell */
 .triad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:40px}
 .triad div{background:var(--paper);padding:28px}
-.triad .wm{font-size:28px;display:block;margin-bottom:12px}
+.triad .wm{font-size:clamp(20px,5.6vw,28px);display:block;margin-bottom:12px}
+.triad div{min-width:0}
 
 /* Process */
 .steps{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:0;counter-reset:s}
@@ -93,6 +94,23 @@ h3{font-family:var(--wide);font-stretch:110%;font-weight:700;font-size:21px;line
 .steps p{margin:0;color:var(--muted);max-width:62ch}
 
 /* Pillars */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:40px}
+.stat{border-top:3px solid var(--ink);padding-top:16px;min-width:0}
+.stat b{display:block;font-family:var(--wide);font-stretch:118%;font-weight:700;font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.02em}
+.stat span{display:block;margin-top:10px;color:var(--muted);font-size:15px}
+.chip{display:inline-flex;align-items:center;gap:8px;font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--source);color:var(--ink);padding:8px 12px;margin-top:8px}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--source)}
+.mission{border-top:3px solid var(--source);border-bottom:1px solid var(--rule);padding-block:28px 32px}
+.mission-text{font-family:var(--wide);font-stretch:112%;font-weight:600;font-size:clamp(22px,2.6vw,32px);line-height:1.25;letter-spacing:-.01em;margin:14px 0 28px;max-width:40ch;text-wrap:balance}
+.commit{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.commit li{display:grid;gap:6px;min-width:0}
+.commit b{font-size:17px}
+.commit span{color:var(--muted);font-size:15px}
+.photo{margin:0;min-width:0}
+.photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid var(--rule)}
+.photo figcaption{font-size:14px;color:var(--muted);margin-top:10px;max-width:60ch}
+.founder{margin-top:44px;background:var(--paper);border:1px solid var(--rule);padding:clamp(20px,3vw,32px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:start}
+.founder p{margin:0;max-width:70ch}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 36px;margin-top:44px}
 .pillars .label{display:block;margin-bottom:12px}
 .pillars p{margin:0;color:var(--muted)}
@@ -173,6 +191,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
   .form{grid-template-columns:1fr}
   .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
   .qs,.triad{grid-template-columns:1fr}
+  .stats,.commit{grid-template-columns:repeat(2,minmax(0,1fr))}
   .bar nav{display:none}
   .hero .meta{text-align:left;justify-items:start;margin-left:0}
 }
@@ -201,10 +220,10 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
     <div class="wrap">
       <a class="home" href="#top" aria-label="Behind the Meter Developments home"><svg width="38" height="34"><use href="#mark"/></svg></a>
       <nav aria-label="Sections">
-        <a href="#approach">Approach</a>
-        <a href="#build">How we build</a>
+        <a href="#meridian">Project Meridian</a>
+        <a href="#who">Who we are</a>
+        <a href="#offer">What we offer</a>
         <a href="#standards">Standards</a>
-        <a href="#neighbors">Neighbors</a>
         <a href="#notes">Field notes</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -234,10 +253,10 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
     <div class="wrap">
       <div>
         <h1 class="wm"><b>Behind</b><span>TMD</span></h1>
-        <p class="tag">Generation where it's needed. Behind the meter.</p>
+        <p class="tag"><strong style="color:var(--ink);font-weight:600">Private power, ready for hyperscale.</strong><br>Generation where it's needed. Behind the meter.</p>
       </div>
       <div class="meta">
-        <span class="label" style="color:var(--ink)">Generation · Land · Compute</span>
+        <span class="label" style="color:var(--ink)">American power · Reliability · Jobs</span>
         <span class="label">behindtmd.com</span>
       </div>
     </div>
@@ -247,12 +266,12 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
 <section id="approach">
   <div class="wrap split">
     <div>
-      <span class="label hot">Behind the meter</span>
-      <h2>Land. Power. Shell. In the same place.</h2>
+      <span class="label hot">The power gap</span>
+      <h2>Demand is outrunning supply. We build the supply.</h2>
     </div>
     <div class="prose">
-      <p class="lead">Most data centers buy their power through a utility meter and wait years in line for the grid to deliver it. We build the generation on the same ground as the load.</p>
-      <p>Behind the meter means the power plant and the data center share a fence line. Electricity moves from the turbine to the bus to the building without waiting on someone else's transmission line. The grid becomes a backup, not a bottleneck.</p>
+      <p class="lead">Hyperscale data centers, factories and new industry need more power than the grid can add. New large loads wait years in line for connections and upgrades, and households end up sharing the cost.</p>
+      <p><strong>Private power changes that.</strong> We build generation where the demand is, then own and run it. Behind the meter means the power plant and the customers it serves share the same ground, so electricity moves from the turbine to the customer without waiting on someone else's transmission line, and the cost of new supply stays off local ratepayers.</p>
       <p>That changes everything about how fast a site comes online, what the power costs, and who controls the schedule. We do.</p>
     </div>
   </div>
@@ -260,21 +279,86 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
     <div class="triad">
       <div><span class="wm"><b>Land</b></span><p class="muted" style="margin:0">Assembled quietly and legally, with water, access and room to grow already worked out.</p></div>
       <div><span class="wm"><b>Power</b></span><p class="muted" style="margin:0">On-site generation tuned like a race engine, with storage that pushes energy back when it pays.</p></div>
-      <div><span class="wm"><b>Shell</b></span><p class="muted" style="margin:0">Powered shells: buildings delivered with power, cooling and fiber in place, ready for the tenant's fit-out.</p></div>
+      <div><span class="wm"><b>Infrastructure</b></span><p class="muted" style="margin:0">Substations, lines and storage that deliver power from the plant to the customer, built to the same standard.</p></div>
     </div>
   </div>
 </section>
 
-<section id="shells">
+<section class="band" id="meridian">
+  <div class="wrap">
+    <span class="label">Current project</span>
+    <h2>Project Meridian</h2>
+    <p class="lead">A privately developed natural gas power campus that adds new, reliable American generation, starting at 1.13 gigawatts and designed to grow to 5 gigawatts.</p>
+    <span class="chip">Status: in acquisition</span>
+    <div class="stats">
+      <div class="stat"><b>1.13 GW</b><span>Phase one, natural gas generation</span></div>
+      <div class="stat"><b>5 GW</b><span>Designed scale at full build-out</span></div>
+      <div class="stat"><b>24/7</b><span>Firm, dispatchable baseload power</span></div>
+      <div class="stat"><b>Phase 1</b><span>Power island built before the load it serves</span></div>
+    </div>
+    <div class="split" style="margin-top:44px">
+      <div class="prose">
+        <p>Project Meridian is the site we are working to acquire and develop. Phase one is a 1.13 GW natural gas power island: generation that runs day and night, in any weather. Later phases add generation in standard blocks as demand for reliable power keeps growing.</p>
+      </div>
+      <div class="prose">
+        <p><strong>Ready for hyperscale.</strong> Meridian is planned around large, steady loads that need firm power around the clock, the kind of demand that hyperscale data centers and heavy industry bring.</p>
+        <p>It's built and run privately, so new capacity comes online without the cost of building it landing on local ratepayers.</p>
+        <p class="muted">Location and site details stay confidential while acquisition is underway.</p>
+        <p><a class="btn solid" href="#contact" data-role="Large power customer (capacity)">Talk to us about capacity</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
   <div class="wrap split">
     <div>
-      <span class="label hot">Power shells</span>
-      <h2>A building that arrives with its power already on.</h2>
+      <span class="label hot">Who we are</span>
+      <h2>Putting American energy back on top.</h2>
     </div>
     <div class="prose">
-      <p>A power shell is the structure, the electrical service, the cooling plant and the connectivity, finished and energized before a tenant moves in. The tenant brings the compute. We bring everything it needs to run on day one.</p>
-      <p>Because our shells sit behind the meter, the capacity a tenant is promised is capacity we generate and control. No waiting on a utility study. No surprise upgrade bill. The date we give is the date the lights come on.</p>
-      <p>We build them modular. Shells go up in pieces, power blocks are added as load grows, and every block is built to the same tested standard, so the tenth one goes up faster and cleaner than the first.</p>
+      <p class="lead">Behind the Meter Developments is a private American power company. We develop new generation and the infrastructure that delivers it, to build, own and run for the long term. We want to be the example for the world: reliable power, built fast, built right, and built by Americans.</p>
+      <p>We believe in American freedom: the freedom to build, and the ability to turn a good idea into something real. That means quick, efficient deployment without cutting corners, and careers that last long after the ribbon is cut.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:0">
+    <div class="mission">
+      <span class="label hot">Our mission</span>
+      <p class="mission-text">To build reliable American power that lowers costs, stores energy where it's needed and lasts for generations, while giving back to every community we serve.</p>
+      <ul class="commit">
+        <li><b>Lower prices</b><span>New supply that brings energy costs down, not up.</span></li>
+        <li><b>Stored power</b><span>Energy stored where it's needed, ready when demand peaks.</span></li>
+        <li><b>Education</b><span>Training and education programs that open energy careers to local people.</span></li>
+        <li><b>Clean water</b><span>Local missions to keep the community's rivers, lakes and water clean.</span></li>
+      </ul>
+    </div>
+    <div class="pillars">
+      <div><span class="label hot">Reliable power</span><h3>Supply the grid can count on.</h3><p>Firm, around-the-clock generation that adds new supply instead of competing for what's already there.</p></div>
+      <div><span class="label hot">American jobs</span><h3>Careers, not gigs.</h3><p>Stable, long-term work in construction, operations and maintenance for the communities that host us.</p></div>
+      <div><span class="label hot">Fast, efficient deployment</span><h3>From plan to power, on schedule.</h3><p>Standard power blocks and modular buildings that go up quickly and the same way every time.</p></div>
+    </div>
+    <div class="founder">
+      <svg width="40" height="35" aria-hidden="true"><use href="#mark"/></svg>
+      <p><strong>Built on hyperscale experience.</strong> Our founder, Bo Scott, has worked in hyperscale data center development from the power side to the finish side, including Meta's 4.6-million-square-foot data center campus in Prineville, Oregon, as a contractor with Bend Construction Supply.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="offer">
+  <div class="wrap">
+    <span class="label hot">What we offer</span>
+    <h2>Everything between raw land and power delivered.</h2>
+    <div class="pillars">
+      <div><span class="label hot">01 · Generation</span><h3>Behind-the-meter power</h3><p>Natural gas generation and storage, designed, built and tuned for around-the-clock reliability.</p></div>
+      <div><span class="label hot">02 · Due diligence</span><h3>Site selection and power</h3><p>We answer the three questions before anyone commits money: is the power real, when does it turn on, and can the land be assembled.</p></div>
+      <div><span class="label hot">03 · Land</span><h3>Land assembly</h3><p>Parcels put together quietly and legally, with water, access and room to grow worked out.</p></div>
+      <div><span class="label hot">04 · Approvals</span><h3>Permits and community</h3><p>Zoning, permits and neighbor concerns solved before the public hearing, not argued about after it.</p></div>
+      <div><span class="label hot">05 · Infrastructure</span><h3>Delivery infrastructure</h3><p>Substations, distribution lines and storage that carry power from the plant to the customer.</p></div>
+      <div><span class="label hot">06 · Delivery</span><h3>Delivery management</h3><p>Schedules, suppliers and budgets held to account, with suppliers who carry the cost when they're late.</p></div>
     </div>
   </div>
 </section>
@@ -296,7 +380,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
   </div>
 </section>
 
-<section class="band" id="energy">
+<section id="energy">
   <div class="wrap split">
     <div>
       <span class="label">How we use energy</span>
@@ -304,8 +388,41 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
     </div>
     <div class="prose">
       <p>You tune it. You get the most out of every bit of fuel. You move air the right way. You bring the heat down. You catch the energy other people throw away.</p>
-      <p>We store energy where it's needed and push it back to the plant when it pays, flattening peaks so the turbines run in their sweet spot and overall costs come down. We use the earth's own cooling instead of fighting it, and we put solar on every square inch of wall we can use.</p>
+      <p>Our generation will be natural gas: dispatchable power that's there around the clock, in any weather. We store energy where it's needed and push it back to the plant when it pays, flattening peaks so the turbines run in their sweet spot and overall costs come down. We use the earth's own cooling instead of fighting it.</p>
       <p>Less waste. Less heat. Less land torn up. Less, done right, beats more, done fast.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="america">
+  <div class="wrap split">
+    <div>
+      <span class="label">Built in America</span>
+      <h2>American power, American jobs, American-made.</h2>
+    </div>
+    <div class="prose">
+      <p class="lead">We will source American-made equipment and materials wherever they're available, and hire American crews.</p>
+      <p>We build long-term careers, not short gigs. The people who build our plants are the people we want running and maintaining them for decades.</p>
+      <p><strong>Ten years or more.</strong> Every lead, contractor and supplier on our sites will bring at least ten years of continuous experience in their trade. Long-term money deserves people who have already proven they can deliver.</p>
+      <p><strong>New, not unproven.</strong> We bring new technology to every site, but only technology that has already run in the field, from partners who have been building for years, not ones that appeared overnight.</p>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="wrap split" style="align-items:center">
+    <figure class="photo">
+      <img src="deschutes.jpg" width="678" height="452" alt="People floating on inner tubes down the Deschutes River in Bend, Oregon, with green banks and three old smokestacks in the background" loading="lazy">
+      <figcaption>The Deschutes River in Bend, Oregon. The old smokestacks behind it once powered a mill; today the whole town floats past them.</figcaption>
+    </figure>
+    <div>
+      <span class="label hot">Clean and empowered</span>
+      <h2>Power plants and clean rivers can share a town.</h2>
+      <div class="prose">
+        <p class="lead">We're committed to keeping the communities we serve clean and empowered.</p>
+        <p>That means water that leaves our plants cleaner than it came in, local missions to protect rivers and lakes, and education and jobs that keep the next generation close to home.</p>
+        <p>A place like the Deschutes is the standard we hold ourselves to: industry and a river the community still loves, side by side.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -318,7 +435,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
     <div class="pillars">
       <div><span class="label hot">Closed-loop cooling</span><h3>The water stays in the loop.</h3><p>We believe in closed-loop cooling systems. Coolant circulates and returns instead of evaporating into the sky.</p></div>
       <div><span class="label hot">Heat transfer</span><h3>Wetter water, cooler halls.</h3><p>Wetting agents, the same idea as Water Wetter in a race radiator, help coolant grab heat faster so the loop does more work with less flow.</p></div>
-      <div><span class="label hot">Water returned</span><h3>Cleaner than we found it.</h3><p>Any water that leaves one of our plants goes back into the environment cleaner than when we got it. That is our standard, not a goal.</p></div>
+      <div><span class="label hot">Water returned</span><h3>Cleaner than we found it.</h3><p>Any water that leaves one of our plants will go back into the environment cleaner than when we got it. That is our standard, not a goal.</p></div>
       <div><span class="label hot">Graphene</span><h3>Advanced materials where they earn it.</h3><p>We use graphene where it's needed: places where better heat transfer, strength or service life pays for itself. Not everywhere, and not for show.</p></div>
       <div><span class="label hot">Harsh-climate tested</span><h3>If it works in the dust, it works anywhere.</h3><p>We test in the harshest, driest climates on purpose. Equipment and designs that survive the heat and the dust earn a place in our standard block.</p></div>
       <div><span class="label hot">Storage</span><h3>Energy stored where it's used.</h3><p>Storage sits at the load, ready to shave peaks and feed the plant back, so we size generation for real demand instead of the worst hour.</p></div>
@@ -450,9 +567,9 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
 <section class="contact" id="contact">
   <div class="wrap">
     <div>
-      <span class="label hot">Long-term investors</span>
+      <span class="label hot">Partners, lenders and investors</span>
       <h2>Not the fast-money kind. The kind who wants it built to last.</h2>
-      <p class="lead">If you want your money in something real, built right, let's talk. Landowners, counties and suppliers who stand behind their dates are welcome too.</p>
+      <p class="lead">If you want your money in something real, built right, let's talk. Lenders, landowners, counties and suppliers who stand behind their dates are welcome too.</p>
       <div class="side">
         <span class="label">Also on LinkedIn</span>
         <a class="btn" href="https://www.linkedin.com/company/behind-the-meter-developments/" target="_blank" rel="noopener">Behind the Meter Developments on LinkedIn ↗</a>
@@ -469,10 +586,11 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
       <div class="field"><label for="cf-role">I am a</label>
         <select id="cf-role" name="role">
           <option>Long-term investor</option>
+          <option>Lender or financing partner</option>
           <option>Landowner</option>
           <option>County or public official</option>
           <option>Supplier or contractor</option>
-          <option>Tenant or compute buyer</option>
+          <option>Large power customer (capacity)</option>
           <option>Other</option>
         </select>
       </div>
@@ -526,10 +644,10 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
       <p class="pull">Paperwork slows it down.</p>
       <p>Say a man has a piece of land. He wants to build power on it. Real power, for real jobs. He even wants to catch the gases that come off the plant and keep them out of the air. You would think that gets a green light.</p>
       <p>It does not. It gets forms. Studies. Hearings. Years of them. Every agency has a rule, and every rule has a fee, and by the time you are done paying for permission, the project costs twice what it should. That extra cost does not make the power cleaner. It does not make it stronger. It just makes it late, and it makes it cost more for everyone at the end of the line.</p>
-      <p>When you are bound by every stinking rule, you learn to work inside a box. And the box keeps getting smaller. That is where the real work is now — finding a way to make gigawatts and run data centers inside that shrinking box, without cutting corners and without wasting money.</p>
+      <p>The rules exist for good reasons, and we follow every one of them. But the box we work inside keeps getting smaller. That is where the real work is now — finding a way to make gigawatts and run data centers inside that shrinking box, without cutting corners and without wasting money.</p>
       <p>At Behind The Meter, we think about a power plant the same way we think about a race engine. You tune it. You get the most out of every bit of fuel. You move air the right way. You bring the heat down. You catch energy other people throw away.</p>
       <p>We test in the harsh places on purpose. If it works in the heat and the dust, it works anywhere.</p>
-      <p>We are focused on less, not more. Less waste. Less heat. Less land torn up. Modular builds that go up in pieces. The earth's own cooling instead of fighting it. Solar on every square inch of wall we can use. Power and data living in the same place, without lighting up the whole sky.</p>
+      <p>We are focused on less, not more. Less waste. Less heat. Less land torn up. Modular builds that go up in pieces. The earth's own cooling instead of fighting it. Power and data living in the same place, without lighting up the whole sky.</p>
       <p>That is not how the big money plays it. The hyperscalers show up with one goal: fast as possible. They do not build relationships. They throw money at problems and promise whatever it takes to get a yes. Then the project runs over budget, runs late, and burns investor money for years, hoping it all works out once the money starts coming in. Sometimes it does. A lot of times it does not.</p>
       <p>We would rather know what we are up against before we spend a dime. Know the land. Know the rules. Know the people. Build it right the first time.</p>
       <p class="pull">Less, done right, beats more, done fast. Every time.</p>
@@ -586,6 +704,13 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;align
   }
   window.addEventListener("hashchange",route); route();
 
+  // buttons that preselect who is writing
+  document.querySelectorAll("a[data-role]").forEach(function(a){
+    a.addEventListener("click",function(){
+      var sel=document.getElementById("cf-role"); if(sel) sel.value=a.getAttribute("data-role");
+      var sub=document.querySelector('#contact-form input[name="subject"]'); if(sub) sub.value="Capacity inquiry from behindtmd.com";
+    });
+  });
   // contact form
   var f=document.getElementById("contact-form"), st=document.getElementById("cf-status"), btn=document.getElementById("cf-send"), t0=Date.now();
   function say(m,c){st.textContent=m;st.className="status"+(c?" "+c:"")}
